@@ -25,10 +25,10 @@ NOTE: The dataset contained few images and even data augmentation techniques ris
 also, in the same image, picture buildings in different damaged condition. This will allow the model to accurately classify the status of a highly damaged building even if it is sorrounded by low-level damaged buildings.
 
 
-
 Training the YOLO Model
 
-With the prepared dataset, the YOLO model is trained using the PyTorch deep learning framework. The training process involves optimizing the model's parameters to minimize the error between its predictions and the ground truth labels.
+With the prepared dataset, the YOLO model is trained using the PyTorch deep learning framework. The training process involves optimizing the model's parameters to minimize the error between its predictions and the ground truth labels. The output is available at "runs/detect/train". The picture "results.png" shows that over the 30 epochs the training box and class loss keeps decreasing, while the validation loss stagnates after about 20 epochs. It is worth noticing that the precision and recall also stabilizes to the highest values after 20 epochs. The confusion matrix in "confusion_matrix_normalized.png" evidences that only the "plane" category is detected correctly with optimal accuracy, while only about 30% of the low and high damaged buildings have been detected. Remaining percentage is labelled as background labelling.      
+With more images, a higher ratio validation/training data, and a bigger YOLO model it would be possible to increase the metrics and obtain better accuracy for the damaged buildings.
 
 Model Evaluation and Deployment
 
