@@ -7,11 +7,13 @@ import numpy as np
 import cv2
 from yolo_damage_assessment.data.data_preprocessor import DataPreprocessor
 
+
 @pytest.fixture
 def temp_dir():
     temp = tempfile.mkdtemp()
     yield temp
     shutil.rmtree(temp)
+
 
 @pytest.fixture
 def config(temp_dir):
@@ -32,9 +34,11 @@ def config(temp_dir):
         }
     }
 
+
 @pytest.fixture
 def preprocessor(config):
     return DataPreprocessor(config)
+
 
 @pytest.fixture
 def sample_image(config):
@@ -44,12 +48,14 @@ def sample_image(config):
     cv2.imwrite(str(image_path), sample_image)
     return image_path
 
+
 def test_preprocess_images(preprocessor, config, sample_image):
     preprocessor.preprocess_images()
     processed_images = list(config['data']['processed_images_path'].glob('*'))
     assert len(processed_images) == 1
     processed_image = cv2.imread(str(processed_images[0]))
     assert processed_image.shape[:2] == tuple(config['preprocessing']['target_size'])
+
 
 def test_augment_images(preprocessor, config, sample_image):
     preprocessor.augment_images()

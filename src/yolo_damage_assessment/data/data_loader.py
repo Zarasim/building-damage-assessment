@@ -1,4 +1,3 @@
-import os
 import random
 import shutil
 from pathlib import Path
@@ -7,6 +6,7 @@ import yaml
 import logging
 
 logger = logging.getLogger(__name__)
+
 
 class DataLoader:
     def __init__(self, config: dict):
@@ -66,7 +66,7 @@ class DataLoader:
         for img_path in images:
             # Copy image
             shutil.copy(img_path, images_path / img_path.name)
-            
+
             # Copy corresponding label file if it exists
             label_path = img_path.with_suffix('.txt')
             if label_path.exists():

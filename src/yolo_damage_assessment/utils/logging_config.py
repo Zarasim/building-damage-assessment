@@ -1,6 +1,7 @@
 import logging
 import sys
 
+
 def setup_logging(log_file=None):
     root_logger = logging.getLogger()
     root_logger.setLevel(logging.INFO)

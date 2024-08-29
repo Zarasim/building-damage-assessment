@@ -10,12 +10,14 @@ from utils.logging_config import setup_logger
 # Set up argument parser
 parser = argparse.ArgumentParser(description='Train YOLOv8 model for building damage assessment')
 parser.add_argument('--config', type=str, default='config/config.yaml', help='Path to the configuration file')
-parser.add_argument('--output', type=str, default='models/trained_models', help='Path to save the trained model and results')
+parser.add_argument('--output', type=str, default='models/trained_models',
+                    help='Path to save the trained model and results')
 
 args = parser.parse_args()
 
 # Set up logging
 logger = setup_logger('training.log')
+
 
 def load_config(config_path: str) -> dict:
     """
@@ -29,6 +31,7 @@ def load_config(config_path: str) -> dict:
     """
     with open(config_path, 'r') as file:
         return yaml.safe_load(file)
+
 
 def train_model(config_path: str, output_dir: str):
     """
@@ -106,6 +109,7 @@ def train_model(config_path: str, output_dir: str):
         logger.exception(f"An error occurred during training: {str(e)}")
     finally:
         mlflow.end_run()
+
 
 if __name__ == "__main__":
     train_model(args.config, args.output)

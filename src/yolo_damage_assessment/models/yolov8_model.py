@@ -2,6 +2,7 @@
 from ultralytics import YOLO
 import yaml
 
+
 class YOLOv8Model:
     def __init__(self, config_path):
         with open(config_path, 'r') as f:
@@ -15,4 +16,3 @@ class YOLOv8Model:
             batch=self.config['training']['batch_size'],
             imgsz=self.config['model']['input_size']
         )
-
