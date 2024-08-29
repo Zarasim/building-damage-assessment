@@ -5,7 +5,7 @@ import shutil
 from pathlib import Path
 import numpy as np
 import cv2
-from src.data.data_preprocessor import DataPreprocessor
+from yolo_damage_assessment.data.data_preprocessor import DataPreprocessor
 
 @pytest.fixture
 def temp_dir():

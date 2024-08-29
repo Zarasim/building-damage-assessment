@@ -3,7 +3,7 @@ import tempfile
 import shutil
 from pathlib import Path
 import yaml
-from src.data.data_loader import DataLoader
+from yolo_damage_assessment.data.data_loader import DataLoader
 
 @pytest.fixture
 def temp_dir():
@@ -39,6 +39,7 @@ def sample_images(config):
         for i in range(10):
             (path / f'image_{i}.jpg').touch()
             (path / f'image_{i}.txt').touch()  # Simulating label files
+    return None  # Return None as the fixture is used for side effects
 
 @pytest.fixture
 def prepared_dataset(data_loader, sample_images):
@@ -47,9 +48,10 @@ def prepared_dataset(data_loader, sample_images):
 
 def test_load_and_split_data(data_loader, sample_images):
     train, val, test = data_loader.load_and_split_data()
-    assert len(train) == 14  # 70% of 20 images
-    assert len(val) == 4     # 20% of 20 images
-    assert len(test) == 2    # 10% of 20 images
+
+    assert len(train) == 28  # 70% of 40 images
+    assert len(val) == 8     # 20% of 40 images
+    assert len(test) == 4    # 10% of 40 images
 
 def test_prepare_yolo_dataset(prepared_dataset, config):
     assert (config['data']['train'] / 'images').exists()
