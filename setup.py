@@ -10,7 +10,7 @@ setup(
         "opencv-python==4.8.1.78",
         "numpy==1.26.2",
         "PyYAML==6.0.1",
-        "torch>=2.2.0",
+        "torch>=2.1.1",
         "torchvision==0.16.1",
         "mlflow==2.15.1"
     ],
