@@ -36,4 +36,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8
     - name: Run linter
-      run: flake8 . --config=.flake8
+      run: flake8 . \
+        --max-line-length=120 \
+        --exclude=.git,__pycache__,docs/source/conf.py,old,build,dist \
+        --ignore=E203,E266,E501,W503 \
+        --max-complexity=18 \
+        --select=B,C,E,F,W,T4,B9
