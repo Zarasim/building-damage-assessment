@@ -1,4 +1,4 @@
-*cache
-*pyc
+**/py[cod]
 .flake8
 .pre-commit-config.yaml
+**/__pycache__/
