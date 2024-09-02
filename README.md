@@ -6,20 +6,11 @@ This project uses YOLOv8 for building footprint detection and damage assessment 
 
 ```
 building_damage_assessment/
-├── src/
-│   ├── data/
-│   │   ├── data_preprocessor.py
-│   │   └── data_loader.py
-│   ├── models/
-│   │   └── yolov8_model.py
-│   ├── utils/
-│   │   └── logging_config.py
-│   └── train.py
-├── tests/
-│   ├── test_data_preprocessor.py
-│   └── test_data_loader.py
 ├── config/
 │   └── config.yaml
+├── utils/
+│   └── logging_config.py
+├── train_yolo.py
 ├── requirements.txt
 └── README.md
 ```
@@ -49,25 +40,13 @@ building_damage_assessment/
 
 2. Run the training script:
    ```
-   python -m src.train
+   python train_yolo.py
    ```
 
    You can also specify custom paths for the configuration file and output directory:
    ```
-   python -m src.train --config path/to/your/config.yaml --output path/to/output/directory
+   python train_yolo.py --config path/to/your/config.yaml --output path/to/output/directory
    ```
-
-## Running Tests
-
-To run the tests:
-
-```
-pytest tests/
-```
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## License
 
