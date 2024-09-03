@@ -1,12 +1,12 @@
 data:
-  yaml_path: /path/to/your/data.yaml
-  test_image: /path/to/your/test/image.png
+    yaml_path: . / yolo / dataset / data.yaml
+    test_image: . / yolo / dataset / images / test / hurricane - florence_00000028_post_disaster.png
 
 model:
-  name: yolov8s.pt
-  input_size: [640, 640]
+    name: yolov8s.pt
+    input_size: [640, 640]
 
 training:
-  batch_size: 8
-  epochs: 100
-  run_name: building_damage_model
+    batch_size: 8
+    epochs: 100
+    run_name: building_damage_model

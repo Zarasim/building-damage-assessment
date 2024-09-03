@@ -5,5 +5,15 @@
 train/
 yolo/
 
+# ignore log files
+*.log
+
+# ignore wheels
 *.whl
+
+# ignore archived files
 *.tar
+*.zip
+
+# ignore yolo models
+*.pt
