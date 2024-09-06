@@ -1,8 +1,13 @@
-**/py[cod]
+# ignore linting and formatting configuration file
 .flake8
 .pre-commit-config.yaml
+
+# ignore cache file
+**/py[cod]
 **/__pycache__/
 **/*egg-info/
+
+# ignore train dataset and yolo processed dataset
 train/
 yolo/
 
@@ -18,6 +23,9 @@ yolo/
 
 # ignore yolo models
 *.pt
+
+# ignore notebooks
+notebooks
 
 # ignore yolo runs
 runs/
