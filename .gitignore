@@ -2,6 +2,7 @@
 .flake8
 .pre-commit-config.yaml
 **/__pycache__/
+**/*egg-info/
 train/
 yolo/
 
@@ -17,3 +18,6 @@ yolo/
 
 # ignore yolo models
 *.pt
+
+# ignore yolo runs
+runs/

@@ -8,12 +8,17 @@ This project uses YOLOv8 for building footprint detection and damage assessment 
 building_damage_assessment/
 ├── config/
 │   └── config.yaml
-├── utils/
-│   └── logging_config.py
+├── src/
+│   └── yolo_damage_assessment/
+│       └── utils/
+│           └── logging_config.py
+|            models/
+│           └── yolov8_model.py
+├── tests/
+│   └── test_train_yolo.py
 ├── train_yolo.py
 ├── requirements.txt
-├── process_xbd_dataset.py
-├── Report.md
+├── setup.py
 └── README.md
 ```
 
@@ -52,4 +57,4 @@ building_damage_assessment/
 
 # License
 
-This project is licensed under the MIT License - see the[LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License.

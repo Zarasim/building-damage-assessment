@@ -3,15 +3,8 @@ import yaml
 import argparse
 from ultralytics import YOLO
 import torch
-from src.yolo_damage_assessment.utils.logging_config import setup_logger
-
-# Set up argument parser
-parser = argparse.ArgumentParser(description='Train YOLOv8 model for building damage assessment')
-parser.add_argument('--config', type=str, default='config/config.yaml', help='Path to the configuration file')
-parser.add_argument('--output', type=str, default='models/trained_models',
-                    help='Path to save the trained model and results')
-
-args = parser.parse_args()
+from pathlib import Path
+from yolo_damage_assessment.utils.logging_config import setup_logger
 
 # Set up logging
 logger = setup_logger('training.log')
@@ -63,6 +56,11 @@ def train_model(config_path: str, output_dir: str):
         test_results = model.predict(test_image_path, save=True, conf=0.5)
         logger.info(f"Test results: {test_results}")
 
+        # Save the trained model
+        output_path = Path(output_dir) / f"{config['training']['run_name']}_best.pt"
+        model.save(output_path)
+        logger.info(f"Saved best model to {output_path}")
+
         # Print and log training results
         logger.info(f"Training completed. Results saved to {output_dir}")
         logger.info(f"Best mAP50: {results.results_dict['metrics/mAP50(B)']:.4f}")
@@ -72,5 +70,17 @@ def train_model(config_path: str, output_dir: str):
         logger.exception(f"An error occurred during training: {str(e)}")
 
 
-if __name__ == "__main__":
+def main():
+    # Set up argument parser
+    parser = argparse.ArgumentParser(description='Train YOLOv8 model for building damage assessment')
+    parser.add_argument('--config', type=str, default='config/config.yaml', help='Path to the configuration file')
+    parser.add_argument('--output', type=str, default='models/trained_models',
+                        help='Path to save the trained model and results')
+
+    args = parser.parse_args()
+
     train_model(args.config, args.output)
+
+
+if __name__ == "__main__":
+    main()

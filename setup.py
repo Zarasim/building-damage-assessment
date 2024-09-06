@@ -3,8 +3,8 @@ from setuptools import setup, find_packages
 setup(
     name="building_damage_assessment",
     version="0.1.0",
-    packages=find_packages(where="src"),
     package_dir={"": "src"},
+    packages=find_packages(where="src"),
     install_requires=[
         "ultralytics==8.0.221",
         "opencv-python==4.8.1.78",
