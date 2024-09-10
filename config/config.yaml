@@ -8,5 +8,5 @@ model:
 
 training:
     batch_size: 8
-    epochs: 20
+    epochs: 10
     run_name: building_damage_model
