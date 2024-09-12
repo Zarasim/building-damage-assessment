@@ -58,7 +58,7 @@ def train_model(config_path: str, output_dir: str):
 
         # Save the trained model
         output_path = Path(output_dir) / f"{config['training']['run_name']}_best.pt"
-        model.save(output_path)
+        torch.save(model, output_path)
         logger.info(f"Saved best model to {output_path}")
 
         # Print and log training results
