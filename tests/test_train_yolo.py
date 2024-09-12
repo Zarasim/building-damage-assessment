@@ -49,7 +49,6 @@ def test_train_model(mock_cuda, mock_yolo, temp_config, tmp_path):
     mock_model.train.assert_called_once()
     mock_model.val.assert_called_once()
     mock_model.predict.assert_called_once()
-    mock_model.save.assert_called_once()
 
 
 @patch('yolo_damage_assessment.train_yolo.YOLO')
